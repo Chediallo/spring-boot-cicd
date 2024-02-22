@@ -31,7 +31,7 @@ public class HelloCicdController {
     }
     
     @GetMapping("/hello-modif")
-    public String get(@PathVariable Long id, @RequestParam String prenom, @RequestParam String nom){
+    public String get(){
         return "Hello apres modification";
     }
     
