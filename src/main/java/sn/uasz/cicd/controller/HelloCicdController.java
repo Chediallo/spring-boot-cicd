@@ -30,6 +30,11 @@ public class HelloCicdController {
         return new User(id, prenom, nom);
     }
     
+    @GetMapping("/hello-modif")
+    public String get(@PathVariable Long id, @RequestParam String prenom, @RequestParam String nom){
+        return "Hello apres modification";
+    }
+    
     @GetMapping("/users")
     public List<User> getUser(){
         User user1 = new User(1l, "Alpha", "Diop");
