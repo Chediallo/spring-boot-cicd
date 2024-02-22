@@ -55,6 +55,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
+                
+                <finalName>spring-boot-cicd-image</finalName>
 	</build>
 
 </project>
