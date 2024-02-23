@@ -42,4 +42,14 @@ public class HelloCicdController {
         User user3 = new User(3l, "Sana", "Badji");
         return List.of(user1,user2,user3);
     }
+    
+    @GetMapping("/notes")
+    public List<Note> getNote(){
+        Note user1 = new Note(1l, 10d,"Alpha");
+        Note user2 = new Note(2l,15d, "Modou");
+        Note user3 = new Note(3l, 19d,"Sana");
+        return List.of(user1,user2,user3);
+    }
+    
+    public record Note(Long id, Double note, String prenom){}
 }
