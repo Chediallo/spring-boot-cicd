@@ -35,13 +35,13 @@ public class HelloCicdController {
         return "Hello apres modification";
     }
     
-    @GetMapping("/users")
+   /* @GetMapping("/users")
     public List<User> getUser(){
         User user1 = new User(1l, "Alpha", "Diop");
         User user2 = new User(2l, "Modou", "Fall");
         User user3 = new User(3l, "Sana", "Badji");
         return List.of(user1,user2,user3);
-    }
+    }*/
     
     @GetMapping("/notes")
     public List<Note> getNote(){
