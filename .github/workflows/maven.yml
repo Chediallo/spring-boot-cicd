@@ -45,37 +45,9 @@ jobs:
         run: docker pull p282758/spring-boot-cicd-image
       - name: Delete old container
         run: docker rm -f spring-boot-cicd-container
-      #- name: Run Docker container
-      #  run: docker run -d -p 8080:8080 --name spring-boot-cicd-container p282758/spring-boot-cicd-image
-      - name: Check if systemd service exists
-        run: sudo systemctl status spring-boot-cicd || true
-        continue-on-error: true
-      - name: Remove systemd service if exists
-        run: sudo systemctl stop spring-boot-cicd && sudo systemctl disable spring-boot-cicd && sudo rm -f /etc/systemd/system/spring-boot-cicd.service
-        continue-on-error: true
-      - name: Create systemd service
-        run: |
-          cat <<EOF | sudo tee /etc/systemd/system/spring-boot-cicd.service
-          [Unit]
-          Description=Spring Boot CICD Service
-          After=network.target
-
-          [Service]
-          Type=simple
-          User=your_username
-          WorkingDirectory=/app
-          ExecStart=/usr/bin/docker run -d -p 8080:8080 --name spring-boot-cicd-container p282758/spring-boot-cicd-image
-          Restart=always
-
-          [Install]
-          WantedBy=multi-user.target
-          EOF
-      - name: Reload systemd
-        run: sudo systemctl daemon-reload
-      - name: Start and enable the service
-        run: |
-          sudo systemctl enable spring-boot-cicd
-          sudo systemctl start spring-boot-cicd
+      - name: Run Docker container
+        run: docker run -d -p 8080:8080 --name spring-boot-cicd-container p282758/spring-boot-cicd-image
+     
         # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
    # - name: Update dependency graph
    #   uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
